@@ -58,7 +58,9 @@ describe("Basic Updates", () => {
 
     // update a single theater document in this collection
     const updateOneResult = await theaters.updateOne(
+      // search criteria
       { theaterId: 8 },
+      // what to update
       {
         $set: { "location.address.street1": "14161 Aldrich Ave S" },
         $inc: {
