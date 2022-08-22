@@ -104,9 +104,8 @@ export default class CommentsDAO {
     try {
       // TODO Ticket: Delete Comments
       // Use the userEmail and commentId to delete the proper comment.
-      const deleteResponse = await comments.deleteOne({
-        _id: ObjectId(commentId),
-      })
+      const filter = { _id: ObjectId(commentId), email: userEmail }
+      const deleteResponse = await comments.deleteOne(filter)
 
       return deleteResponse
     } catch (e) {
