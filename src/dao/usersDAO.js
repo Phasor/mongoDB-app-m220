@@ -181,8 +181,10 @@ export default class UsersDAO {
       // TODO Ticket: User Preferences
       // Use the data in "preferences" to update the user's preferences.
       const updateResponse = await users.updateOne(
-        { someField: someValue },
-        { $set: { someOtherField: someOtherValue } },
+        // this is the search query
+        { email: email },
+        // this is the update
+        { $set: { preferences: preferences } },
       )
 
       if (updateResponse.matchedCount === 0) {
