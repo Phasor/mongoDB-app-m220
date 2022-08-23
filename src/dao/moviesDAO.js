@@ -323,8 +323,11 @@ export default class MoviesDAO {
       ]
       return await movies.aggregate(pipeline).next()
     } catch (e) {
-      console.error(`Something went wrong in getMovieByID, ${e}`)
-      return null
+      if (e.toString().includes("invalid object ID")) {
+        return null
+      } else {
+        console.error(`Something went wrong in getMovieByID, ${e}`)
+      }
     }
   }
 }
